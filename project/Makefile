@@ -20,4 +20,4 @@ load: blinky_buzzy_toy.elf
 	mspdebug rf2500 "prog $^"
 
 clean:
-	rm -f *.o *.elf
+	rm -f *.o *.elf *.h~ *.c~ *.s~
