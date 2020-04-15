@@ -51,7 +51,7 @@ void buzzer_play(){
   }
 
   else{
-    led_state(0, 1); // Green Led on when song is on
+    led_state(0, 0); // turn off Leds
   }
 
   buzzer_set_period(note); // play current not

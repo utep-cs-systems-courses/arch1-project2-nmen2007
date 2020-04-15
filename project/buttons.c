@@ -2,6 +2,7 @@
 #include "buttons.h"
 #include "led.h"
 #include "buzzer.h"
+#include "state_machine.h"
 
 char bottom; // bottom switch
 char top_1; // starts from far left switch
@@ -65,15 +66,27 @@ void switch_interrupt_handler(){ // Handler for Switches
 
   //bottom switches
   char p1val = switch_update_interrupt_sense_p1();
-  bottom = (p1val & BOTTOM) ? 0 : 1; //Intialize
+  bottom = (p1val & BOTTOM) ? 0 : 1; //Intialize bottom
 
   //top switches
   char p2val = switch_update_interrupt_sense_p2();
 
-  top_1 = (p2val & TOP_1) ? 0 : 1; //Intialize
-  top_2 = (p2val & TOP_2) ? 0 : 1;
-  top_3 = (p2val & TOP_3) ? 0 : 1;
-  top_4 = (p2val & TOP_4) ? 0 : 1;
+  top_1 = (p2val & TOP_1) ? 0 : 1; //S1
+  top_2 = (p2val & TOP_2) ? 0 : 1; //S2
+  top_3 = (p2val & TOP_3) ? 0 : 1; //S3
+  top_4 = (p2val & TOP_4) ? 0 : 1; //S4
+  
+
+  if(top_3){
+
+    dim();
+  }
+  
+  if(top_4){
+    
+    binary_count();
+
+  }
 }
   
 				  
